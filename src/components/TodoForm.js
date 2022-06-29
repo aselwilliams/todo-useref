@@ -1,13 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import {nanoid} from 'nanoid'
 
-function TodoForm() {
+function TodoForm(props) {
     const [input, setInput]=useState('')
 
     const handleChange=(e)=>{
         setInput(e.target.value)
     }
     const handleSubmit=(e)=>{
-        e.preventDefault()
+        e.preventDefault();
+        
         props.onSubmit({
             id: nanoid(),
             text: input,
@@ -16,7 +18,7 @@ function TodoForm() {
     }
   return (
     <form onSubmit={handleSubmit} className='todo-form'>
-        <input type='text' placeholder='Add a todo' value={input} onChange={handleChange} />
+        <input type='text' placeholder='Add a todo' name='text' value={input} onChange={handleChange} />
         <button className='add'>Add todo</button>
     </form>
   )
