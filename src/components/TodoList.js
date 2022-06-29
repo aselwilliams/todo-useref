@@ -14,11 +14,12 @@ function TodoList() {
     }
 
     const updateTodo=(todoId, newValue)=>{
-        if(!newValue || /^\s*$/.test(newValue)){
+        if(!newValue.text || /^\s*$/.test(newValue.text)){
             return;
-        }
+        }console.log(newValue,'newValue')
         setTodos(prev=>prev.map(item=>(item.id===todoId ? newValue : item)))
     }
+
     const removeTodo=(id)=>{
         const removeArr=[...todos].filter((item)=>item.id!==id)
         setTodos(removeArr)
